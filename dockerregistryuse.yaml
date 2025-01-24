@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dockerapp
+  namespace: default 
+  labels:
+    name: dockerapp
+spec:
+  containers:
+  - name: dockerapp
+    image: prateekkumawat/finexo:1
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
