@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finexo
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: finexo
+  template:
+    metadata:
+      labels:
+        app: finexo
+    spec:
+      containers:
+      - name: finexoapp_web
+        image: prateekkumawat/finexo:1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
