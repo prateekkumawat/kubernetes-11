@@ -13,7 +13,7 @@ spec:
         app: finexo
     spec:
       containers:
-      - name: finexoapp_web
+      - name: finexoapp
         image: prateekkumawat/finexo:1
         resources:
           limits:
