@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-database-app
+  namespace: database
+  labels:
+    app: mysql 
+    enviornment: database
+spec:
+  selector:
+    matchLabels:
+      app: mysql 
+      enviornment: database
+  template:
+    metadata:
+      labels:
+        app: mysql 
+        enviornment: database
+    spec:
+      containers:
+      - name: mysql-database-app
+        image: mysql:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3306
+        env: 
+          - name: MYSQL_ROOT_PASSWORD
+            value: redhat
+          - name: MYSQL_USER
+            value: prateek
+          - name: MYSQL_ROOT_PASSWORD
+            value: redhat 
+          - name: MYSQL_DATABASE
+            value: testdata
+        volumeMounts:
+        - name: datastore
+          mountPath: /var/lib/mysql/ 
+      volumes:
+      - name: datastore
+        persistentVolumeClaim: 
+          claimName: database-pvc-uses
+          
