@@ -31,7 +31,7 @@ spec:
             value: 
           - name: MYSQL_USER
             value: prateek
-          - name: MYSQL_ROOT_PASSWORD
+          - name: MYSQL_PASSWORD
             value: redhat 
           - name: MYSQL_DATABASE
             value: testdata
