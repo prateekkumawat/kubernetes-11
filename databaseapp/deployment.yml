@@ -28,7 +28,7 @@ spec:
         - containerPort: 3306
         env: 
           - name: MYSQL_ROOT_PASSWORD
-            value: 
+            value: redhat
           - name: MYSQL_USER
             value: prateek
           - name: MYSQL_PASSWORD
