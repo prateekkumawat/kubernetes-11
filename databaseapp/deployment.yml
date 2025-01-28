@@ -22,13 +22,13 @@ spec:
         image: mysql:latest
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "1000Mi"
+            cpu: "1000m"
         ports:
         - containerPort: 3306
         env: 
           - name: MYSQL_ROOT_PASSWORD
-            value: redhat
+            value: 
           - name: MYSQL_USER
             value: prateek
           - name: MYSQL_ROOT_PASSWORD
