@@ -30,7 +30,7 @@ spec:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: mysql-database-app-secret   # secret name 
+                name: pgsql-database-app-secret   # secret name 
                 key: password      # secret value of key 
         volumeMounts:
         - name: datastore
