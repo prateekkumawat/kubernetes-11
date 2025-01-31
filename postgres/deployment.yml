@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgsql-database-app
+  namespace: postgres
+  labels:
+    app: pgsql 
+    enviornment: database
+spec:
+  selector:
+    matchLabels:
+      app: pgsql 
+      enviornment: database
+  template:
+    metadata:
+      labels:
+        app: pgsql 
+        enviornment: database
+    spec:
+      containers:
+      - name: pgsql-database-app
+        image: postgres:latest
+        resources:
+          limits:
+            memory: "1000Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 3306
+        env: 
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-database-app-secret   # secret name 
+                key: password      # secret value of key 
+        volumeMounts:
+        - name: datastore
+          mountPath: /var/lib/postgresql/data/
+      volumes:
+      - name: datastore
+        persistentVolumeClaim: 
+          claimName: pgsql-pvc-uses
+          
