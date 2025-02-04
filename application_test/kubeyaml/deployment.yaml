@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-service-img
+spec:
+  selector:
+    matchLabels:
+      app: web-service-img
+  template:
+    metadata:
+      labels:
+        app: web-service-img
+    spec:
+      containers:
+      - name: web-service-img
+        image: prateekkumawat/app:webingtest 
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
