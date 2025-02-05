@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gym-app-ingress
+  labels:
+    name: gym-app
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /gymapp
+        backend:
+          service:
+            name: gym-app
+            port: 
+              number: 80
