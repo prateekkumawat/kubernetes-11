@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-service-img-ingress
+  labels:
+    name: web-service-img
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  
+spec:
+  inggressClassname: nginx
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: "webimg"
+        backend:
+          service:
+            name: web-service-img
+            port: 
+              number: 80
