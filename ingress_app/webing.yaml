@@ -13,7 +13,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: "webimg"
+        path: /webimg
         backend:
           service:
             name: web-service-img
