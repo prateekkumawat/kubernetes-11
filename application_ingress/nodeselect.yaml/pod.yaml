@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app123
+  labels:
+    name: app123
+spec:
+  containers:
+  - name: app123
+    image: nginx
+    resources:
+    ports:
+      - containerPort: 80
+  nodeSelector: 
+    application: node1    
