@@ -35,7 +35,7 @@ spec:
             value: wp
           - name: WORDPRESS_DB_HOST
             value: mysql-database-app-svc.database.svc.cluster.local:3306
-        volumeMount:
+        volumeMounts:
           - name: wordpressdata
             mountPath: /var/www/html/
       volumes:
