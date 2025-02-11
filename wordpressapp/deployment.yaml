@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wpapp
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wpapp
+        image: wordpress:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+          - name: WORDPRESS_DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: wordpress-secret
+                key: user
+          - name: WORDPRESS_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: wordpress-secret
+                key: password
+          - name: WORDPRESS_DB_NAME
+            value: wp
+          - name: WORDPRESS_DB_HOST
+            value: mysql-database-app-svc.database.svc.cluster.local:3306
+        volumeMount:
+          - name: wordpressdata
+            mountPath: /var/www/html/
+      volumes:
+      - name: wordpressdata
+        persistentVolumeClaim: 
+          claimName: wpvol-pvc  
