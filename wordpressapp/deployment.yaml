@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
       - name: wpapp
-        image: wordpress:latest
+        image: wordpress:6.2.1-apache
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "1500Mi"
+            cpu: "2000m"
         ports:
         - containerPort: 80
         env:
@@ -37,7 +37,7 @@ spec:
           - name: WORDPRESS_DB_NAME
             value: wp
           - name: WORDPRESS_DB_HOST
-            value: mysql-database-app-svc.database.svc.cluster.local:3306
+            value: mysql-database-app-svc.database.svc.cluster.local
         volumeMounts:
           - name: wordpressdata
             mountPath: /var/www/html/
