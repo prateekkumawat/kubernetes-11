@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: myapp
+        app: node
         type: ui
     spec:
       containers:
@@ -21,4 +21,4 @@ spec:
         image: prateekkumawat/appsrc:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
