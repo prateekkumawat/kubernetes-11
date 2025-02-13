@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: frontend
+  name: uiapp-svc
+  labels:
+     app: node
+     type: ui
+spec:
+  selector:
+    app: node
+  type: ClusterIP
+  ports:
+  - name: uiapp-port
+    port:  8089
+    targetPort: 5000

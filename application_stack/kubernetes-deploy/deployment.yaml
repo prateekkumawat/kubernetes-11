@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uiapp
+  namespace: frontend
+  labels: 
+     app: node
+     type: ui
+spec:
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: myapp
+        type: ui
+    spec:
+      containers:
+      - name: uiapp-node
+        image: prateekkumawat/appsrc:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
